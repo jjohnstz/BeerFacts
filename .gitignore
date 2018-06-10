@@ -25,6 +25,7 @@ xcuserdata/
 *.moved-aside
 *.xccheckout
 *.xcscmblueprint
+*.xcworkspace/xcuserdata
 
 ## Obj-C/Swift specific
 *.hmap
@@ -43,7 +44,13 @@ playground.xcworkspace
 # Package.pins
 .build/
 
-# CocoaPods - Refactored to standalone file
+### CocoaPods ###
+## CocoaPods GitIgnore Template
+
+# CocoaPods - Only use to conserve bandwidth / Save time on Pushing
+#           - Also handy if you have a large number of dependant pods
+#           - AS PER https://guides.cocoapods.org/using/using-cocoapods.html NEVER IGNORE THE LOCK FILE
+Pods/
 
 # Carthage - Refactored to standalone file
 
