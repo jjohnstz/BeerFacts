@@ -13,6 +13,7 @@ target 'BeerFacts' do
     # Pods for testing
     pod 'Quick'
     pod 'Nimble'
+    pod 'KIF', :configurations => ['Debug']
   end
 
 end

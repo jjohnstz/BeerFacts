@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4193A8E31DDB6F76523D5F42 /* Pods_BeerFactsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4104C89EF893ECBBB7C390C /* Pods_BeerFactsTests.framework */; };
 		D2AB0C3CB057D513241E5875 /* Pods_BeerFacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D85726574C27D95F70583A /* Pods_BeerFacts.framework */; };
+		F50E1D2D20CF7A8300850983 /* XCTestCase+KIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50E1D2C20CF7A8300850983 /* XCTestCase+KIF.swift */; };
+		F50E1D2F20CF7CF000850983 /* TestConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50E1D2E20CF7CF000850983 /* TestConfiguration.swift */; };
 		F522463F20CF77E400CFE4CF /* ViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F522463E20CF77E400CFE4CF /* ViewControllerSpec.swift */; };
 		F584248620CDBD09009B2ACA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F584248520CDBD09009B2ACA /* AppDelegate.swift */; };
 		F584248820CDBD09009B2ACA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F584248720CDBD09009B2ACA /* ViewController.swift */; };
@@ -35,6 +37,8 @@
 		6B26469BB7376675FBF358CE /* Pods-BeerFacts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeerFacts.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeerFacts/Pods-BeerFacts.release.xcconfig"; sourceTree = "<group>"; };
 		BADA88F5562519FA3CD5DA59 /* Pods-BeerFactsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeerFactsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeerFactsTests/Pods-BeerFactsTests.release.xcconfig"; sourceTree = "<group>"; };
 		F4104C89EF893ECBBB7C390C /* Pods_BeerFactsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeerFactsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F50E1D2C20CF7A8300850983 /* XCTestCase+KIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+KIF.swift"; sourceTree = "<group>"; };
+		F50E1D2E20CF7CF000850983 /* TestConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConfiguration.swift; sourceTree = "<group>"; };
 		F522463E20CF77E400CFE4CF /* ViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerSpec.swift; sourceTree = "<group>"; };
 		F584248220CDBD09009B2ACA /* BeerFacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeerFacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F584248520CDBD09009B2ACA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +131,8 @@
 			children = (
 				F584249A20CDBD0A009B2ACA /* BeerFactsTests.swift */,
 				F584249C20CDBD0A009B2ACA /* Info.plist */,
+				F50E1D2C20CF7A8300850983 /* XCTestCase+KIF.swift */,
+				F50E1D2E20CF7CF000850983 /* TestConfiguration.swift */,
 			);
 			path = BeerFactsTests;
 			sourceTree = "<group>";
@@ -307,11 +313,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-BeerFactsTests/Pods-BeerFactsTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/KIF/KIF.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KIF.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 			);
@@ -353,6 +361,8 @@
 			files = (
 				F584249B20CDBD0A009B2ACA /* BeerFactsTests.swift in Sources */,
 				F522463F20CF77E400CFE4CF /* ViewControllerSpec.swift in Sources */,
+				F50E1D2F20CF7CF000850983 /* TestConfiguration.swift in Sources */,
+				F50E1D2D20CF7A8300850983 /* XCTestCase+KIF.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
