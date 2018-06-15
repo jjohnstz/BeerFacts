@@ -6,6 +6,10 @@ target 'BeerFacts' do
   use_frameworks!
 
   # Pods for BeerFacts
+  pod 'Alamofire'
+  pod 'BrightFutures'
+  pod 'Swinject'
+  pod 'SwinjectStoryboard'
 
   target 'BeerFactsTests' do
     inherit! :search_paths
