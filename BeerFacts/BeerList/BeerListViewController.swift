@@ -1,19 +1,26 @@
-//
-//  BeerListViewController.swift
-//  BeerFacts
-//
-//  Created by Jesse Johnston on 6/15/18.
-//  Copyright © 2018 Jesse Johnston. All rights reserved.
-//
-
 import Foundation
 import UIKit
 
-protocol BeerListViewProcotol {
-    
+enum BeerListViewAction {
+    case showActivityIndicator(Bool)
+}
+
+protocol BeerListViewProcotol: class {
+    func perform(action: BeerListViewAction)
 }
 
 class BeerListViewController: UIViewController, BeerListViewProcotol {
+    
+    enum AccessibilityLabel {
+        static let activityIndicator = "activityIndicator"
+    }
+
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView! {
+        didSet {
+            activityIndicator.accessibilityLabel = AccessibilityLabel.activityIndicator
+            activityIndicator.isHidden = true
+        }
+    }
     
     private var interactor: BeerListInteractorProtocol!
     
@@ -25,5 +32,16 @@ class BeerListViewController: UIViewController, BeerListViewProcotol {
         super.viewDidLoad()
 
         interactor?.onViewEvent(event: .viewDidLoad)
+    }
+    
+    func perform(action: BeerListViewAction) {
+        switch(action) {
+        case .showActivityIndicator(let show):
+            handleShowActivityIndicator(show)
+        }
+    }
+    
+    private func handleShowActivityIndicator(_ show: Bool) {
+        activityIndicator.isHidden = !show
     }
 }

@@ -18,20 +18,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BEER LIST" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kv0-We-odC">
-                                <rect key="frame" x="147.5" y="333" width="80" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="y4i-HO-4WQ">
+                                <rect key="frame" x="169" y="325.5" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Kv0-We-odC" firstAttribute="centerX" secondItem="gXl-fX-5jb" secondAttribute="centerX" id="G0E-Gz-Dp1"/>
-                            <constraint firstItem="Kv0-We-odC" firstAttribute="centerY" secondItem="gXl-fX-5jb" secondAttribute="centerY" id="ve2-SH-atE"/>
+                            <constraint firstItem="y4i-HO-4WQ" firstAttribute="centerY" secondItem="gXl-fX-5jb" secondAttribute="centerY" id="eR2-Kf-XZd"/>
+                            <constraint firstItem="y4i-HO-4WQ" firstAttribute="centerX" secondItem="gXl-fX-5jb" secondAttribute="centerX" id="mxo-v9-S2r"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gXl-fX-5jb"/>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="y4i-HO-4WQ" id="Osl-IF-84P"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N9P-2P-xre" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

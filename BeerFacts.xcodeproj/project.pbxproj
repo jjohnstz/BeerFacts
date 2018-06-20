@@ -20,8 +20,6 @@
 		D2AB0C3CB057D513241E5875 /* Pods_BeerFacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D85726574C27D95F70583A /* Pods_BeerFacts.framework */; };
 		4193A8E31DDB6F76523D5F42 /* Pods_BeerFactsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4104C89EF893ECBBB7C390C /* Pods_BeerFactsTests.framework */; };
 		F50E1D2F20CF7CF000850983 /* TestConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50E1D2E20CF7CF000850983 /* TestConfiguration.swift */; };
-		F584248820CDBD09009B2ACA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F584248720CDBD09009B2ACA /* ViewController.swift */; };
-		F522463F20CF77E400CFE4CF /* ViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F522463E20CF77E400CFE4CF /* ViewControllerSpec.swift */; };
 		F50E1D2D20CF7A8300850983 /* XCTestCase+KIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50E1D2C20CF7A8300850983 /* XCTestCase+KIF.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,8 +55,6 @@
 		30D85726574C27D95F70583A /* Pods_BeerFacts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeerFacts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4104C89EF893ECBBB7C390C /* Pods_BeerFactsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeerFactsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F50E1D2E20CF7CF000850983 /* TestConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConfiguration.swift; sourceTree = "<group>"; };
-		F584248720CDBD09009B2ACA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F522463E20CF77E400CFE4CF /* ViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerSpec.swift; sourceTree = "<group>"; };
 		F50E1D2C20CF7A8300850983 /* XCTestCase+KIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+KIF.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,8 +128,6 @@
 				F584249120CDBD0A009B2ACA /* Info.plist */,
 				F584248920CDBD09009B2ACA /* Main.storyboard */,
 				F5FA6C7120D8BCBC00A87ACF /* MainAssembly.swift */,
-				F584248720CDBD09009B2ACA /* ViewController.swift */,
-				F522463E20CF77E400CFE4CF /* ViewControllerSpec.swift */,
 			);
 			path = BeerFacts;
 			sourceTree = "<group>";
@@ -375,7 +369,6 @@
 				F5A6B82820D43766000BCE51 /* BeerListViewController.swift in Sources */,
 				F5AAAC6120D45F4500E78228 /* BeerService.swift in Sources */,
 				F5FA6C7220D8BCBC00A87ACF /* MainAssembly.swift in Sources */,
-				F584248820CDBD09009B2ACA /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,7 +377,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F50E1D2F20CF7CF000850983 /* TestConfiguration.swift in Sources */,
-				F522463F20CF77E400CFE4CF /* ViewControllerSpec.swift in Sources */,
 				F50E1D2D20CF7A8300850983 /* XCTestCase+KIF.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
