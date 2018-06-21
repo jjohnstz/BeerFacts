@@ -13,7 +13,7 @@
         <!--Beer List View Controller-->
         <scene sceneID="HO8-JY-DhM">
             <objects>
-                <viewController id="n8G-5f-1HJ" customClass="BeerListViewController" customModule="BeerFacts" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BeerListView" id="n8G-5f-1HJ" customClass="BeerListViewController" customModule="BeerFacts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5mP-I4-Drm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

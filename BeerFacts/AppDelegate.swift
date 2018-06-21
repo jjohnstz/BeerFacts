@@ -2,7 +2,6 @@ import UIKit
 import Swinject
 import SwinjectStoryboard
 
-@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
