@@ -1,24 +1,24 @@
 import Foundation
 
-enum BeerListViewEvent {
+enum BeerListViewEvent: Equatable {
     case viewDidLoad
 }
 
 protocol BeerListInteractorProtocol {
-    func onViewEvent(event: BeerListViewEvent)
+    func handle(event: BeerListViewEvent)
 }
 
 class BeerListInteractor: BeerListInteractorProtocol {
     
-    private let beerService: BeerService
+    private let beerService: BeerServiceProtocol
     
     weak var view: BeerListViewProcotol?
     
-    init(beerService: BeerService) {
+    init(beerService: BeerServiceProtocol) {
         self.beerService = beerService
     }
     
-    func onViewEvent(event: BeerListViewEvent) {
+    func handle(event: BeerListViewEvent) {
         switch event {
         case .viewDidLoad:
             handleViewDidLoad()
@@ -28,8 +28,8 @@ class BeerListInteractor: BeerListInteractorProtocol {
     private func handleViewDidLoad() {
         view?.perform(action: .showActivityIndicator(true))
         
-        beerService.getRandom()
-            .onSuccess { (beer) in
+        beerService.getBeers()
+            .onSuccess { (beers) in
                 self.view?.perform(action: .showActivityIndicator(false))
                 print("Finished loading beers")
             }

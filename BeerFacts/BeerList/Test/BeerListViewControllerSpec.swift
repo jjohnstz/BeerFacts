@@ -1,5 +1,3 @@
-import Foundation
-
 import Quick
 import Nimble
 
@@ -10,10 +8,14 @@ class BeerListViewControllerSpec: QuickSpec {
         describe("BeerListViewController") {
             
             var subject: BeerListViewController!
+            var interactor: MockBeerListInteractor!
             
             beforeEach {
+                interactor = MockBeerListInteractor()
+                
                 let storyboard = UIStoryboard(name: "BeerList", bundle: nil)
                 subject = storyboard.instantiateViewController(withIdentifier: "BeerListView") as! BeerListViewController
+                subject.inject(interactor: interactor)
                 self.displayViewController(subject)
             }
             
@@ -21,7 +23,9 @@ class BeerListViewControllerSpec: QuickSpec {
                 self.tester().waitForAbsenceOfView(withAccessibilityLabel: BeerListViewController.AccessibilityLabel.activityIndicator)
             }
             
-            //TODO : view did Load
+            it("should have sent viewDidLoad to interactor") {
+                expect(interactor.event).to(equal(BeerListViewEvent.viewDidLoad))
+            }
             
             describe("perform actions") {
                 context("activity spinner, show = true") {
@@ -43,9 +47,7 @@ class BeerListViewControllerSpec: QuickSpec {
                         self.tester().waitForAbsenceOfView(withAccessibilityLabel: BeerListViewController.AccessibilityLabel.activityIndicator)
                     }
                 }
-                
             }
-            
         }
     }
 }

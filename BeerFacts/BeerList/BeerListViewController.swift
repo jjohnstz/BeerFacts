@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-enum BeerListViewAction {
+enum BeerListViewAction: Equatable {
     case showActivityIndicator(Bool)
 }
 
@@ -31,7 +31,7 @@ class BeerListViewController: UIViewController, BeerListViewProcotol {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        interactor?.onViewEvent(event: .viewDidLoad)
+        interactor?.handle(event: .viewDidLoad)
     }
     
     func perform(action: BeerListViewAction) {
