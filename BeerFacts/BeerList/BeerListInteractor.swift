@@ -1,48 +1,42 @@
-//
-//  BeerListInteractor.swift
-//  BeerFacts
-//
-//  Created by Jesse Johnston on 6/15/18.
-//  Copyright © 2018 Jesse Johnston. All rights reserved.
-//
-
 import Foundation
 
-enum BeerListViewEvent {
+enum BeerListViewEvent: Equatable {
     case viewDidLoad
 }
 
 protocol BeerListInteractorProtocol {
-    func onViewEvent(event: BeerListViewEvent)
+    func handle(event: BeerListViewEvent)
 }
 
 class BeerListInteractor: BeerListInteractorProtocol {
     
-    let beerService: BeerService
+    private let beerService: BeerServiceProtocol
     
-    init() {
-        beerService = BeerService() // TODO : inject me
+    weak var view: BeerListViewProcotol?
+    
+    init(beerService: BeerServiceProtocol) {
+        self.beerService = beerService
     }
     
-    func onViewEvent(event: BeerListViewEvent) {
+    func handle(event: BeerListViewEvent) {
         switch event {
         case .viewDidLoad:
-            //TODO : tell view to show spinner
             handleViewDidLoad()
         }
     }
     
     private func handleViewDidLoad() {
-        beerService.getRandom()
-            .onSuccess { (beer) in
-                print("Name: " + beer.name)
-                print("Tagline: " + beer.tagline)
-                print("Description: " + beer.description)
-                print("ABV: " + String(beer.abv))
-                print("IBU: " + String(beer.ibu!))
-            }.onFailure { (error) in
+        view?.perform(action: .showActivityIndicator(true))
+        
+        beerService.getBeers()
+            .onSuccess { (beers) in
+                self.view?.perform(action: .showActivityIndicator(false))
+                print("Finished loading beers")
+            }
+            .onFailure { (error) in
                 print("Failure")
-        }
+                //TODO : Display something to user
+            }
     }
     
 }

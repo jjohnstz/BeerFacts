@@ -6,9 +6,13 @@ public enum BeerError: Error {
     case someError //TODO, need some better errors
 }
 
-class BeerService {
-    func getRandom() -> Future<Beer, BeerError> {
-        let promise = Promise<Beer, BeerError>()
+protocol BeerServiceProtocol: class {
+    func getBeers() -> Future<[Beer], BeerError>
+}
+
+class BeerService: BeerServiceProtocol {
+    func getBeers() -> Future<[Beer], BeerError> {
+        let promise = Promise<[Beer], BeerError>()
         
         Alamofire.request("https://api.punkapi.com/v2/beers").responseJSON { response in
             
@@ -17,7 +21,7 @@ class BeerService {
                 let decoder = JSONDecoder()
                 let beers = try! decoder.decode([Beer].self, from: jsonData)
                 
-                promise.success(beers.first!)
+                promise.success(beers)
                 
             } else {
                 promise.failure(.someError)
