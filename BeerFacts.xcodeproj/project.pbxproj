@@ -13,6 +13,8 @@
 		F5A6B82520D43742000BCE51 /* BeerList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5A6B82420D43742000BCE51 /* BeerList.storyboard */; };
 		F5A6B82A20D456AE000BCE51 /* BeerListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A6B82920D456AE000BCE51 /* BeerListInteractor.swift */; };
 		F565834520E34060003E1E03 /* BeerListInteractorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F565834420E34060003E1E03 /* BeerListInteractorSpec.swift */; };
+		F5DFC7A920F465E400645D9F /* BeerListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DFC7A820F465E400645D9F /* BeerListPresenter.swift */; };
+		F5DFC7AB20F469B800645D9F /* BeerListPresenterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DFC7AA20F469B800645D9F /* BeerListPresenterSpec.swift */; };
 		F5A6B82820D43766000BCE51 /* BeerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A6B82720D43766000BCE51 /* BeerListViewController.swift */; };
 		F57E76E020DB4B3F008C210B /* BeerListViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57E76DF20DB4B3F008C210B /* BeerListViewControllerSpec.swift */; };
 		F5AAAC6120D45F4500E78228 /* BeerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AAAC6020D45F4500E78228 /* BeerService.swift */; };
@@ -24,6 +26,7 @@
 		F5FA6C7220D8BCBC00A87ACF /* MainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FA6C7120D8BCBC00A87ACF /* MainAssembly.swift */; };
 		F57E76E920DB53CE008C210B /* MainAssemblySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57E76E720DB53AA008C210B /* MainAssemblySpec.swift */; };
 		F565834120E33E96003E1E03 /* MockBeerListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F565834020E33E96003E1E03 /* MockBeerListInteractor.swift */; };
+		F5DFC7AD20F46DAA00645D9F /* MockBeerListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DFC7AC20F46DAA00645D9F /* MockBeerListPresenter.swift */; };
 		F565834320E33FF3003E1E03 /* MockBeerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F565834220E33FF3003E1E03 /* MockBeerListViewController.swift */; };
 		F565834720E340D4003E1E03 /* MockBeerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F565834620E340D4003E1E03 /* MockBeerService.swift */; };
 		D2AB0C3CB057D513241E5875 /* Pods_BeerFacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D85726574C27D95F70583A /* Pods_BeerFacts.framework */; };
@@ -55,6 +58,8 @@
 		F5A6B82420D43742000BCE51 /* BeerList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BeerList.storyboard; sourceTree = "<group>"; };
 		F5A6B82920D456AE000BCE51 /* BeerListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListInteractor.swift; sourceTree = "<group>"; };
 		F565834420E34060003E1E03 /* BeerListInteractorSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListInteractorSpec.swift; sourceTree = "<group>"; };
+		F5DFC7A820F465E400645D9F /* BeerListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListPresenter.swift; sourceTree = "<group>"; };
+		F5DFC7AA20F469B800645D9F /* BeerListPresenterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListPresenterSpec.swift; sourceTree = "<group>"; };
 		F5A6B82720D43766000BCE51 /* BeerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListViewController.swift; sourceTree = "<group>"; };
 		F57E76DF20DB4B3F008C210B /* BeerListViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListViewControllerSpec.swift; sourceTree = "<group>"; };
 		F5AAAC6020D45F4500E78228 /* BeerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerService.swift; sourceTree = "<group>"; };
@@ -66,6 +71,7 @@
 		F5FA6C7120D8BCBC00A87ACF /* MainAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAssembly.swift; sourceTree = "<group>"; };
 		F57E76E720DB53AA008C210B /* MainAssemblySpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAssemblySpec.swift; sourceTree = "<group>"; };
 		F565834020E33E96003E1E03 /* MockBeerListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBeerListInteractor.swift; sourceTree = "<group>"; };
+		F5DFC7AC20F46DAA00645D9F /* MockBeerListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBeerListPresenter.swift; sourceTree = "<group>"; };
 		F565834220E33FF3003E1E03 /* MockBeerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBeerListViewController.swift; sourceTree = "<group>"; };
 		F565834620E340D4003E1E03 /* MockBeerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBeerService.swift; sourceTree = "<group>"; };
 		214F3CEA1DF7EFF309281A30 /* Pods-BeerFacts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeerFacts.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeerFacts/Pods-BeerFacts.debug.xcconfig"; sourceTree = "<group>"; };
@@ -124,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				F565834020E33E96003E1E03 /* MockBeerListInteractor.swift */,
+				F5DFC7AC20F46DAA00645D9F /* MockBeerListPresenter.swift */,
 				F565834220E33FF3003E1E03 /* MockBeerListViewController.swift */,
 				F565834620E340D4003E1E03 /* MockBeerService.swift */,
 			);
@@ -143,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				F565834420E34060003E1E03 /* BeerListInteractorSpec.swift */,
+				F5DFC7AA20F469B800645D9F /* BeerListPresenterSpec.swift */,
 				F57E76DF20DB4B3F008C210B /* BeerListViewControllerSpec.swift */,
 			);
 			path = Test;
@@ -219,6 +227,7 @@
 				F57E76DE20DB4B1F008C210B /* Test */,
 				F5A6B82420D43742000BCE51 /* BeerList.storyboard */,
 				F5A6B82920D456AE000BCE51 /* BeerListInteractor.swift */,
+				F5DFC7A820F465E400645D9F /* BeerListPresenter.swift */,
 				F5A6B82720D43766000BCE51 /* BeerListViewController.swift */,
 			);
 			path = BeerList;
@@ -448,6 +457,7 @@
 				F584248620CDBD09009B2ACA /* AppDelegate.swift in Sources */,
 				F53BB70820D49EC700FE5E19 /* Beer.swift in Sources */,
 				F5A6B82A20D456AE000BCE51 /* BeerListInteractor.swift in Sources */,
+				F5DFC7A920F465E400645D9F /* BeerListPresenter.swift in Sources */,
 				F5A6B82820D43766000BCE51 /* BeerListViewController.swift in Sources */,
 				F5AAAC6120D45F4500E78228 /* BeerService.swift in Sources */,
 				F5FA6C7220D8BCBC00A87ACF /* MainAssembly.swift in Sources */,
@@ -461,11 +471,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F565834520E34060003E1E03 /* BeerListInteractorSpec.swift in Sources */,
+				F5DFC7AB20F469B800645D9F /* BeerListPresenterSpec.swift in Sources */,
 				F57E76E020DB4B3F008C210B /* BeerListViewControllerSpec.swift in Sources */,
 				F565834A20E34298003E1E03 /* BeerServiceSpec.swift in Sources */,
 				F5D6B5FB20E5E2AB00868818 /* BeerSpec.swift in Sources */,
 				F57E76E920DB53CE008C210B /* MainAssemblySpec.swift in Sources */,
 				F565834120E33E96003E1E03 /* MockBeerListInteractor.swift in Sources */,
+				F5DFC7AD20F46DAA00645D9F /* MockBeerListPresenter.swift in Sources */,
 				F565834320E33FF3003E1E03 /* MockBeerListViewController.swift in Sources */,
 				F565834720E340D4003E1E03 /* MockBeerService.swift in Sources */,
 				F50E1D2F20CF7CF000850983 /* TestConfiguration.swift in Sources */,

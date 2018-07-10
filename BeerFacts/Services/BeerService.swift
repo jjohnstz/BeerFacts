@@ -15,7 +15,6 @@ class BeerService: BeerServiceProtocol {
         let promise = Promise<[Beer], BeerError>()
         
         Alamofire.request("https://api.punkapi.com/v2/beers").responseJSON { response in
-            
             if let jsonData = response.data{
                 
                 let decoder = JSONDecoder()

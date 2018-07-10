@@ -11,12 +11,14 @@ class BeerListInteractorSpec: QuickSpec {
             var subject: BeerListInteractor!
             var view: MockBeerListViewController!
             var service: MockBeerService!
+            var presenter: MockBeerListPresenter!
             
             beforeEach {
                 view = MockBeerListViewController()
                 service = MockBeerService()
+                presenter = MockBeerListPresenter()
                 
-                subject = BeerListInteractor(beerService: service)
+                subject = BeerListInteractor(beerService: service, beerListPresenter: presenter)
                 subject.view = view
             }
             
