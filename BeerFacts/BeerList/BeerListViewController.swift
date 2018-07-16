@@ -16,6 +16,10 @@ class BeerListViewController: UIViewController, BeerListViewProcotol {
         static let activityIndicator = "activityIndicator"
         static let tableView = "tableView"
     }
+    
+    enum Constants {
+        static let beerListCellIdentifier = "beerListCellIdentifier"
+    }
 
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView! {
         didSet {
@@ -50,6 +54,8 @@ class BeerListViewController: UIViewController, BeerListViewProcotol {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.register(UINib(nibName: "BeerListTableViewCell", bundle: nil), forCellReuseIdentifier: Constants.beerListCellIdentifier)
+        
         interactor?.handle(event: .viewDidLoad)
     }
     
@@ -73,8 +79,11 @@ extension BeerListViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = viewState?.beerTableViewStates[indexPath.row].name
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.beerListCellIdentifier, for: indexPath) as? BeerListTableViewCell, let viewState = viewState?.beerTableViewStates[indexPath.row] else {
+            return UITableViewCell()
+        }
+        
+        cell.configure(with: viewState)
         return cell
     }
 }
