@@ -16,7 +16,7 @@ class BeerListViewControllerSpec: QuickSpec {
                 let storyboard = UIStoryboard(name: "BeerList", bundle: nil)
                 subject = storyboard.instantiateViewController(withIdentifier: "BeerListView") as! BeerListViewController
                 subject.inject(interactor: interactor)
-                self.displayViewController(subject)
+                TestView.displayViewController(subject)
             }
             
             it("should have hidden activity indicator") {
