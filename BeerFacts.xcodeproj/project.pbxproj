@@ -17,6 +17,8 @@
 		F57E76E020DB4B3F008C210B /* BeerListViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57E76DF20DB4B3F008C210B /* BeerListViewControllerSpec.swift */; };
 		F5AAAC6120D45F4500E78228 /* BeerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AAAC6020D45F4500E78228 /* BeerService.swift */; };
 		F565834A20E34298003E1E03 /* BeerServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F565834920E34298003E1E03 /* BeerServiceSpec.swift */; };
+		F5D6B5FB20E5E2AB00868818 /* BeerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D6B5FA20E5E2AB00868818 /* BeerSpec.swift */; };
+		F5D6B5FE20E5E31300868818 /* GetBeersFixture.json in Resources */ = {isa = PBXBuildFile; fileRef = F5D6B5FD20E5E31300868818 /* GetBeersFixture.json */; };
 		F584249020CDBD0A009B2ACA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F584248E20CDBD0A009B2ACA /* LaunchScreen.storyboard */; };
 		F584248B20CDBD09009B2ACA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F584248920CDBD09009B2ACA /* Main.storyboard */; };
 		F5FA6C7220D8BCBC00A87ACF /* MainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FA6C7120D8BCBC00A87ACF /* MainAssembly.swift */; };
@@ -57,6 +59,8 @@
 		F57E76DF20DB4B3F008C210B /* BeerListViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListViewControllerSpec.swift; sourceTree = "<group>"; };
 		F5AAAC6020D45F4500E78228 /* BeerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerService.swift; sourceTree = "<group>"; };
 		F565834920E34298003E1E03 /* BeerServiceSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerServiceSpec.swift; sourceTree = "<group>"; };
+		F5D6B5FA20E5E2AB00868818 /* BeerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerSpec.swift; sourceTree = "<group>"; };
+		F5D6B5FD20E5E31300868818 /* GetBeersFixture.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GetBeersFixture.json; sourceTree = "<group>"; };
 		F584249120CDBD0A009B2ACA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F584249C20CDBD0A009B2ACA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5FA6C7120D8BCBC00A87ACF /* MainAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAssembly.swift; sourceTree = "<group>"; };
@@ -130,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				F565834920E34298003E1E03 /* BeerServiceSpec.swift */,
+				F5D6B5FA20E5E2AB00868818 /* BeerSpec.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -199,6 +204,7 @@
 		F584249920CDBD0A009B2ACA /* BeerFactsTests */ = {
 			isa = PBXGroup;
 			children = (
+				F5D6B5FC20E5E2D600868818 /* Fixture */,
 				F565833F20E33D64003E1E03 /* Mock */,
 				F584249C20CDBD0A009B2ACA /* Info.plist */,
 				F50E1D2E20CF7CF000850983 /* TestConfiguration.swift */,
@@ -235,6 +241,14 @@
 				F5AAAC6020D45F4500E78228 /* BeerService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		F5D6B5FC20E5E2D600868818 /* Fixture */ = {
+			isa = PBXGroup;
+			children = (
+				F5D6B5FD20E5E31300868818 /* GetBeersFixture.json */,
+			);
+			path = Fixture;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,6 +347,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5D6B5FE20E5E31300868818 /* GetBeersFixture.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +463,7 @@
 				F565834520E34060003E1E03 /* BeerListInteractorSpec.swift in Sources */,
 				F57E76E020DB4B3F008C210B /* BeerListViewControllerSpec.swift in Sources */,
 				F565834A20E34298003E1E03 /* BeerServiceSpec.swift in Sources */,
+				F5D6B5FB20E5E2AB00868818 /* BeerSpec.swift in Sources */,
 				F57E76E920DB53CE008C210B /* MainAssemblySpec.swift in Sources */,
 				F565834120E33E96003E1E03 /* MockBeerListInteractor.swift in Sources */,
 				F565834320E33FF3003E1E03 /* MockBeerListViewController.swift in Sources */,
