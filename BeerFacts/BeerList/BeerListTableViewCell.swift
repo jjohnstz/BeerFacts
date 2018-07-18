@@ -3,6 +3,9 @@ import UIKit
 
 class BeerListTableViewCell: UITableViewCell {
     
+    static let nibName = "BeerListTableViewCell"
+    static let identifier = "beerListCellIdentifier"
+    
     enum AccessibilityLabel {
         static let nameLabel = "nameLabel"
         static let tagLabel = "tagLabel"
@@ -41,5 +44,9 @@ class BeerListTableViewCell: UITableViewCell {
     
     func configure(with viewState: BeerListTableViewState) {
         self.viewState = viewState
+        
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = UIColor.brown
+        self.selectedBackgroundView = bgColorView
     }
 }

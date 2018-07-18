@@ -4,6 +4,8 @@ import UIKit
 enum BeerListViewAction: Equatable {
     case showActivityIndicator(Bool)
     case display(BeerListViewState)
+    case errorMessage(String)
+    case routeToBeerDetails(beerName: String)
 }
 
 protocol BeerListViewProcotol: class {
@@ -18,7 +20,7 @@ class BeerListViewController: UIViewController, BeerListViewProcotol {
     }
     
     enum Constants {
-        static let beerListCellIdentifier = "beerListCellIdentifier"
+        static let showDetailsSegue = "ShowBeerDetails"
     }
 
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView! {
@@ -32,6 +34,9 @@ class BeerListViewController: UIViewController, BeerListViewProcotol {
         didSet {
             tableView.accessibilityLabel = AccessibilityLabel.tableView
             tableView.dataSource = self
+            tableView.delegate = self
+            
+            tableView.register(UINib(nibName: BeerListTableViewCell.nibName, bundle: nil), forCellReuseIdentifier: BeerListTableViewCell.identifier)
         }
     }
     
@@ -46,16 +51,15 @@ class BeerListViewController: UIViewController, BeerListViewProcotol {
     }
     
     private var interactor: BeerListInteractorProtocol!
+    private var router: SegueRouterProtocol!
     
-    func inject(interactor: BeerListInteractorProtocol) {
+    func inject(interactor: BeerListInteractorProtocol, router: SegueRouterProtocol) {
         self.interactor = interactor
+        self.router = router
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        tableView.register(UINib(nibName: "BeerListTableViewCell", bundle: nil), forCellReuseIdentifier: Constants.beerListCellIdentifier)
-        
         interactor?.handle(event: .viewDidLoad)
     }
     
@@ -65,11 +69,34 @@ class BeerListViewController: UIViewController, BeerListViewProcotol {
             handleShowActivityIndicator(show)
         case .display(let viewState):
             self.viewState = viewState
+        case .errorMessage(_):
+            break //TODO
+        case .routeToBeerDetails(let name):
+            handleRouteToBeerDetails(name: name)
         }
     }
     
     private func handleShowActivityIndicator(_ show: Bool) {
         activityIndicator.isHidden = !show
+    }
+    
+    private func handleRouteToBeerDetails(name: String) {
+        if let selectedIndex = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selectedIndex, animated: true)
+        }
+        
+        router.route(from: self, to: Constants.showDetailsSegue) { (destinationVC) in
+            if let beerDetailsVC = destinationVC as? BeerDetailsViewController {
+                beerDetailsVC.configure(beerName: name)
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if let router = sender as? SegueRouter {
+            router.handler?(segue.destination)
+        }
     }
 }
 
@@ -79,11 +106,17 @@ extension BeerListViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.beerListCellIdentifier, for: indexPath) as? BeerListTableViewCell, let viewState = viewState?.beerTableViewStates[indexPath.row] else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: BeerListTableViewCell.identifier, for: indexPath) as? BeerListTableViewCell, let viewState = viewState?.beerTableViewStates[indexPath.row] else {
             return UITableViewCell()
         }
         
         cell.configure(with: viewState)
         return cell
+    }
+}
+
+extension BeerListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        interactor.handle(event: .didSelectIndex(indexPath.row))
     }
 }

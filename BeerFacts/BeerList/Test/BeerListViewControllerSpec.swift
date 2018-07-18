@@ -15,7 +15,7 @@ class BeerListViewControllerSpec: QuickSpec {
                 
                 let storyboard = UIStoryboard(name: "BeerList", bundle: nil)
                 subject = storyboard.instantiateViewController(withIdentifier: "BeerListView") as! BeerListViewController
-                subject.inject(interactor: interactor)
+                subject.inject(interactor: interactor, router: SegueRouter()) //TODO: user fake
                 TestView.displayViewController(subject)
             }
             

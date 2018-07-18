@@ -2,6 +2,7 @@ import Foundation
 
 enum BeerListViewEvent: Equatable {
     case viewDidLoad
+    case didSelectIndex(Int)
 }
 
 protocol BeerListInteractorProtocol {
@@ -12,6 +13,8 @@ class BeerListInteractor: BeerListInteractorProtocol {
     
     private let beerService: BeerServiceProtocol
     private let beerListPresenter: BeerListPresenterProtocol
+    
+    private var beers: [Beer]?
     
     weak var view: BeerListViewProcotol?
     
@@ -24,6 +27,8 @@ class BeerListInteractor: BeerListInteractorProtocol {
         switch event {
         case .viewDidLoad:
             handleViewDidLoad()
+        case .didSelectIndex(let index):
+            handleSelectIndex(index)
         }
     }
     
@@ -34,13 +39,19 @@ class BeerListInteractor: BeerListInteractorProtocol {
             .onSuccess { (beers) in
                 self.view?.perform(action: .showActivityIndicator(false))
                 
+                self.beers = beers
+                
                 let beerListViewState = self.beerListPresenter.getBeerListViewState(beers: beers)
                 self.view?.perform(action: .display(beerListViewState))
             }
             .onFailure { (error) in
-                print("Failure")
-                //TODO : Display something to user
+                self.view?.perform(action: .errorMessage("Failed to load beers.  Sorry :("))
             }
     }
     
+    private func handleSelectIndex(_ index: Int) {
+        if let beer = beers?[index] {
+            view?.perform(action: .routeToBeerDetails(beerName: beer.name))
+        }
+    }
 }
