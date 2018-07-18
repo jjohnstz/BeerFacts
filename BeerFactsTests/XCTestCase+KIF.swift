@@ -8,11 +8,6 @@ extension XCTestCase {
     func system(file : String = #file, _ line : Int = #line) -> KIFSystemTestActor {
         return KIFSystemTestActor(inFile: file, atLine: line, delegate: self)
     }
-    
-    // Display view controller so that KIF can interact with it
-    public func displayViewController(_ viewController: UIViewController) {
-        UIApplication.shared.keyWindow?.rootViewController = viewController
-    }
 }
 
 extension KIFTestActor {

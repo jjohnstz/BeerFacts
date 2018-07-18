@@ -11,11 +11,13 @@ protocol BeerListInteractorProtocol {
 class BeerListInteractor: BeerListInteractorProtocol {
     
     private let beerService: BeerServiceProtocol
+    private let beerListPresenter: BeerListPresenterProtocol
     
     weak var view: BeerListViewProcotol?
     
-    init(beerService: BeerServiceProtocol) {
+    init(beerService: BeerServiceProtocol, beerListPresenter: BeerListPresenterProtocol) {
         self.beerService = beerService
+        self.beerListPresenter = beerListPresenter
     }
     
     func handle(event: BeerListViewEvent) {
@@ -31,7 +33,9 @@ class BeerListInteractor: BeerListInteractorProtocol {
         beerService.getBeers()
             .onSuccess { (beers) in
                 self.view?.perform(action: .showActivityIndicator(false))
-                print("Finished loading beers")
+                
+                let beerListViewState = self.beerListPresenter.getBeerListViewState(beers: beers)
+                self.view?.perform(action: .display(beerListViewState))
             }
             .onFailure { (error) in
                 print("Failure")

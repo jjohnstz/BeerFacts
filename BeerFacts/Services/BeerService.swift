@@ -3,7 +3,8 @@ import Alamofire
 import BrightFutures
 
 public enum BeerError: Error {
-    case someError //TODO, need some better errors
+    case decodeError
+    case serviceError
 }
 
 protocol BeerServiceProtocol: class {
@@ -11,20 +12,23 @@ protocol BeerServiceProtocol: class {
 }
 
 class BeerService: BeerServiceProtocol {
+    private enum Constants {
+        static let beersEndPoint = "https://api.punkapi.com/v2/beers"
+    }
+    
     func getBeers() -> Future<[Beer], BeerError> {
         let promise = Promise<[Beer], BeerError>()
         
-        Alamofire.request("https://api.punkapi.com/v2/beers").responseJSON { response in
-            
+        Alamofire.request(Constants.beersEndPoint).responseJSON { response in
             if let jsonData = response.data{
-                
-                let decoder = JSONDecoder()
-                let beers = try! decoder.decode([Beer].self, from: jsonData)
+                guard let beers = try? JSONDecoder().decode([Beer].self, from: jsonData) else {
+                    promise.failure(.decodeError)
+                    return
+                }
                 
                 promise.success(beers)
-                
             } else {
-                promise.failure(.someError)
+                promise.failure(.serviceError)
             }
         }
         
