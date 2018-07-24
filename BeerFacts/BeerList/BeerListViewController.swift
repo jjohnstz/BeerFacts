@@ -46,6 +46,7 @@ class BeerListViewController: UIViewController, BeerListViewProcotol {
                 return
             }
             
+            activityIndicator.isHidden = true
             tableView.reloadData()
         }
     }
