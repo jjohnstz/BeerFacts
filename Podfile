@@ -8,6 +8,7 @@ target 'BeerFacts' do
   # Pods for BeerFacts
   pod 'Alamofire'
   pod 'BrightFutures'
+  pod 'Kingfisher'
   pod 'Swinject'
   pod 'SwinjectStoryboard'
 

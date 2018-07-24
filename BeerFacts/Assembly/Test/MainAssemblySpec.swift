@@ -18,6 +18,19 @@ class MainAssemblySpec: QuickSpec {
                 resolver = assembler.resolver
             }
             
+            describe("BeerListViewController") {
+                var beerListViewController: BeerListViewController?
+                
+                beforeEach {
+                    let storyboard = SwinjectStoryboard.create(name: "BeerList", bundle: nil, container: testContainer)
+                    beerListViewController = storyboard.instantiateInitialViewController() as? BeerListViewController
+                }
+                
+                it("should get resolved") {
+                    expect(beerListViewController).toNot(beNil())
+                }
+            }
+            
             describe("BeerListInteractor") {
                 var beerListInteractor: BeerListInteractor?
                 
@@ -27,6 +40,19 @@ class MainAssemblySpec: QuickSpec {
                 
                 it("should get resolved") {
                     expect(beerListInteractor).toNot(beNil())
+                }
+            }
+            
+            describe("BeerDetailsViewController") {
+                var beerDetailsViewController: BeerDetailsViewController?
+                
+                beforeEach {
+                    let storyboard = SwinjectStoryboard.create(name: "BeerDetails", bundle: nil, container: testContainer)
+                    beerDetailsViewController = storyboard.instantiateInitialViewController() as? BeerDetailsViewController
+                }
+                
+                it("should get resolved") {
+                    expect(beerDetailsViewController).toNot(beNil())
                 }
             }
             
@@ -42,16 +68,15 @@ class MainAssemblySpec: QuickSpec {
                 }
             }
             
-            describe("BeerListViewController") {
-                var beerListViewController: BeerListViewController?
+            describe("SegueRouter") {
+                var segueRouter: SegueRouter?
                 
                 beforeEach {
-                    let storyboard = SwinjectStoryboard.create(name: "BeerList", bundle: nil, container: testContainer)
-                    beerListViewController = storyboard.instantiateInitialViewController() as? BeerListViewController
+                    segueRouter = resolver.resolve(SegueRouter.self)
                 }
                 
                 it("should get resolved") {
-                    expect(beerListViewController).toNot(beNil())
+                    expect(segueRouter).toNot(beNil())
                 }
             }
         }
