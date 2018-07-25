@@ -12,11 +12,12 @@ protocol BeerListViewProcotol: class {
     func perform(action: BeerListViewAction)
 }
 
-class BeerListViewController: UIViewController, BeerListViewProcotol {
+class BeerListViewController: UIViewController {
     
     enum AccessibilityLabel {
         static let activityIndicator = "activityIndicator"
         static let tableView = "tableView"
+        static let errorLabel = "errorLabel"
     }
     
     enum Constants {
@@ -40,6 +41,12 @@ class BeerListViewController: UIViewController, BeerListViewProcotol {
         }
     }
     
+    @IBOutlet weak var errorLabel: UILabel! {
+        didSet {
+            errorLabel.accessibilityLabel = AccessibilityLabel.errorLabel
+        }
+    }
+    
     private var viewState: BeerListViewState? {
         didSet {
             guard viewState != nil else {
@@ -47,6 +54,8 @@ class BeerListViewController: UIViewController, BeerListViewProcotol {
             }
             
             activityIndicator.isHidden = true
+            errorLabel.isHidden = true
+            tableView.isHidden = false
             tableView.reloadData()
         }
     }
@@ -64,14 +73,23 @@ class BeerListViewController: UIViewController, BeerListViewProcotol {
         interactor?.handle(event: .viewDidLoad)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if let router = sender as? SegueRouter {
+            router.handler?(segue.destination)
+        }
+    }
+}
+
+extension BeerListViewController: BeerListViewProcotol {
     func perform(action: BeerListViewAction) {
         switch(action) {
         case .showActivityIndicator(let show):
             handleShowActivityIndicator(show)
         case .display(let viewState):
             self.viewState = viewState
-        case .errorMessage(_):
-            break //TODO
+        case .errorMessage(let message):
+            handleErrorMessage(message)
         case .routeToBeerDetails(let name):
             handleRouteToBeerDetails(name: name)
         }
@@ -79,6 +97,16 @@ class BeerListViewController: UIViewController, BeerListViewProcotol {
     
     private func handleShowActivityIndicator(_ show: Bool) {
         activityIndicator.isHidden = !show
+        errorLabel.isHidden = true
+        tableView.isHidden = true
+    }
+    
+    private func handleErrorMessage(_ message: String) {
+        activityIndicator.isHidden = true
+        errorLabel.isHidden = false
+        tableView.isHidden = true
+        
+        errorLabel.text = message
     }
     
     private func handleRouteToBeerDetails(name: String) {
@@ -90,13 +118,6 @@ class BeerListViewController: UIViewController, BeerListViewProcotol {
             if let beerDetailsVC = destinationVC as? BeerDetailsViewController {
                 beerDetailsVC.configure(beerName: name)
             }
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if let router = sender as? SegueRouter {
-            router.handler?(segue.destination)
         }
     }
 }

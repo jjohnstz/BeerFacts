@@ -28,20 +28,15 @@ class BeerDetailsInteractor: BeerDetailsInteractorProtocol {
     }
     
     private func handleViewDidLoad(with beerName: String) {
-//        view?.perform(action: .showActivityIndicator(true)) //TODO
+        view?.perform(action: .showActivityIndicator(true))
 
-        print("looking for a beer", beerName)
         beerService.getBeer(withName: beerName)
             .onSuccess { (beer) in
-                print("Found a beer: ", beer)
-                //self.view?.perform(action: .showActivityIndicator(false))
-
                 let viewState = self.presenter.getViewState(beer: beer)
                 self.view?.perform(action: .display(viewState))
             }
             .onFailure { (error) in
-                print("failed to find a beer", error)
-                //TODO : self.view?.perform(action: .errorMessage("Failed to load beers.  Sorry :("))
+                self.view?.perform(action: .errorMessage("Failed to load beers.  Sorry :("))
         }
     }
     

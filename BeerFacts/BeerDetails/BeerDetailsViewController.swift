@@ -6,6 +6,7 @@ import Kingfisher
 enum BeerDetailsViewAction: Equatable {
     case showActivityIndicator(Bool)
     case display(BeerDetailsViewState)
+    case errorMessage(String)
 }
 
 protocol BeerDetailsViewProcotol: class {
@@ -84,6 +85,8 @@ class BeerDetailsViewController: UIViewController, BeerDetailsViewProcotol {
             break //TODO
         case .display(let viewState):
             self.viewState = viewState
+        case .errorMessage(_):
+            break //TODO
         }
     }
 }
