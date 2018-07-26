@@ -18,15 +18,63 @@ class BeerDetailsViewController: UIViewController, BeerDetailsViewProcotol {
     enum AccessibilityLabel {
         static let activityIndicator = "activityIndicator"
         static let imageView = "imageView"
+        static let nameLabel = "nameLabel"
+        static let tagLabel = "tagLabel"
+        static let ibuLabel = "ibuLabel"
+        static let abvLabel = "abvLabel"
+        static let descriptionLabel = "descriptionLabel"
+        static let stackView = "stackView"
+        static let errorLabel = "errorLabel"
+        
+    }
+
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView! {
+        didSet {
+            activityIndicator.accessibilityLabel = AccessibilityLabel.activityIndicator
+        }
     }
     
-    //TODO : add accessibility labels
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var tagLabel: UILabel!
-    @IBOutlet weak var ibuLabel: UILabel!
-    @IBOutlet weak var abvLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var nameLabel: UILabel! {
+        didSet {
+            nameLabel.accessibilityLabel = AccessibilityLabel.nameLabel
+        }
+    }
+    
+    @IBOutlet weak var tagLabel: UILabel! {
+        didSet {
+            tagLabel.accessibilityLabel = AccessibilityLabel.tagLabel
+        }
+    }
+    
+    @IBOutlet weak var ibuLabel: UILabel! {
+        didSet {
+            ibuLabel.accessibilityLabel = AccessibilityLabel.ibuLabel
+        }
+    }
+    
+    @IBOutlet weak var abvLabel: UILabel! {
+        didSet {
+            abvLabel.accessibilityLabel = AccessibilityLabel.abvLabel
+        }
+    }
+    
+    @IBOutlet weak var descriptionLabel: UILabel! {
+        didSet {
+            descriptionLabel.accessibilityLabel = AccessibilityLabel.descriptionLabel
+        }
+    }
+    
+    @IBOutlet weak var stackView: UIStackView! {
+        didSet {
+            stackView.accessibilityLabel = AccessibilityLabel.stackView
+        }
+    }
+    
+    @IBOutlet weak var errorLabel: UILabel! {
+        didSet {
+            errorLabel.accessibilityLabel = AccessibilityLabel.errorLabel
+        }
+    }
     
     @IBOutlet weak var imageView: UIImageView! {
         didSet {
@@ -42,12 +90,18 @@ class BeerDetailsViewController: UIViewController, BeerDetailsViewProcotol {
                 return
             }
             
+            activityIndicator.isHidden = true
+            errorLabel.isHidden = true
+            stackView.isHidden = false
+            imageView.isHidden = false
+            
             nameLabel.text = viewState.name
             tagLabel.text = viewState.tagline
             descriptionLabel.text = viewState.description
             abvLabel.text = viewState.abv
             ibuLabel.text = viewState.ibu
-            imageView.kf.setImage(with: viewState.imageURL) //TODO: create wrapper for Kingfisher
+            
+            imageCache.cacheAndDisplayImage(on: imageView, imageURL: viewState.imageURL)
             
             for pairing in viewState.foodPairings {
                 let label = UILabel()
@@ -63,10 +117,12 @@ class BeerDetailsViewController: UIViewController, BeerDetailsViewProcotol {
  
     private var interactor: BeerDetailsInteractorProtocol!
     private var router: SegueRouterProtocol!
+    private var imageCache: ImageCacheProtocol!
     
-    func inject(interactor: BeerDetailsInteractorProtocol, router: SegueRouterProtocol) {
+    func inject(interactor: BeerDetailsInteractorProtocol, router: SegueRouterProtocol, imageCache: ImageCacheProtocol) {
         self.interactor = interactor
         self.router = router
+        self.imageCache = imageCache
     }
     
     func configure(beerName: String) {
@@ -81,12 +137,28 @@ class BeerDetailsViewController: UIViewController, BeerDetailsViewProcotol {
     
     func perform(action: BeerDetailsViewAction) {
         switch(action) {
-        case .showActivityIndicator(_):
-            break //TODO
+        case .showActivityIndicator(let show):
+            handleShowActivityIndicator(show)
         case .display(let viewState):
             self.viewState = viewState
-        case .errorMessage(_):
-            break //TODO
+        case .errorMessage(let message):
+            handleErrorMessage(message)
         }
+    }
+    
+    private func handleShowActivityIndicator(_ show: Bool) {
+        activityIndicator.isHidden = !show
+        errorLabel.isHidden = true
+        stackView.isHidden = true
+        imageView.isHidden = true
+    }
+    
+    private func handleErrorMessage(_ message: String) {
+        activityIndicator.isHidden = true
+        errorLabel.isHidden = false
+        stackView.isHidden = true
+        imageView.isHidden = true
+        
+        errorLabel.text = message
     }
 }

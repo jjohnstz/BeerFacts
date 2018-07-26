@@ -23,7 +23,7 @@ class MainAssemblySpec: QuickSpec {
                 
                 beforeEach {
                     let storyboard = SwinjectStoryboard.create(name: "BeerList", bundle: nil, container: testContainer)
-                    beerListViewController = storyboard.instantiateInitialViewController() as? BeerListViewController
+                    beerListViewController = storyboard.instantiateViewController(withIdentifier: "BeerListView") as? BeerListViewController
                 }
                 
                 it("should get resolved") {

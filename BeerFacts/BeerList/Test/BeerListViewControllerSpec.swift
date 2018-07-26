@@ -21,10 +21,6 @@ class BeerListViewControllerSpec: QuickSpec {
                 TestView.displayViewController(subject)
             }
             
-            it("should have hidden activity indicator") {
-                self.tester().waitForAbsenceOfView(withAccessibilityLabel: BeerListViewController.AccessibilityLabel.activityIndicator)
-            }
-            
             it("should have sent viewDidLoad to interactor") {
                 expect(interactor.event).to(equal(BeerListViewEvent.viewDidLoad))
             }
