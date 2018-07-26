@@ -1,6 +1,6 @@
 import Foundation
 
-struct Beer: Codable {
+struct Beer: Codable, Equatable {
     let name: String
     let tagline: String
     let description: String

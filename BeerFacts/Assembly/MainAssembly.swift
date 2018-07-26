@@ -16,8 +16,9 @@ class MainAssembly: Assembly {
         container.storyboardInitCompleted(BeerDetailsViewController.self) { (resolver, viewController) in
             let interactor = resolver.resolve(BeerDetailsInteractor.self)!
             let router = resolver.resolve(SegueRouter.self)!
+            let imageCache = resolver.resolve(ImageCacheWrapper.self)!
             
-            viewController.inject(interactor: interactor, router: router)
+            viewController.inject(interactor: interactor, router: router, imageCache: imageCache)
             interactor.view = viewController
         }
         
@@ -49,6 +50,10 @@ class MainAssembly: Assembly {
         
         container.register(SegueRouter.self) { _ in
             return SegueRouter()
+        }
+        
+        container.register(ImageCacheWrapper.self) { _ in
+            return ImageCacheWrapper()
         }
     }
 }

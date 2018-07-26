@@ -37,8 +37,6 @@ class BeerListInteractor: BeerListInteractorProtocol {
         
         beerService.getBeers()
             .onSuccess { (beers) in
-                self.view?.perform(action: .showActivityIndicator(false))
-                
                 self.beers = beers
                 
                 let beerListViewState = self.beerListPresenter.getBeerListViewState(beers: beers)

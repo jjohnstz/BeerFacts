@@ -14,11 +14,20 @@
         <!--Beer Details View Controller-->
         <scene sceneID="Ldz-7h-BeL">
             <objects>
-                <viewController id="1Vr-NO-ZHB" customClass="BeerDetailsViewController" customModule="BeerFacts" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BeerDetailsView" id="1Vr-NO-ZHB" customClass="BeerDetailsViewController" customModule="BeerFacts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yxS-pB-Aq0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="56x-o2-nBC">
+                                <rect key="frame" x="177" y="333.5" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N4l-cm-soR">
+                                <rect key="frame" x="166" y="333.5" width="42" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="390" translatesAutoresizingMaskIntoConstraints="NO" id="miS-ON-nva">
                                 <rect key="frame" x="16" y="36" width="80" height="312"/>
                                 <constraints>
@@ -92,16 +101,22 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="BRd-ik-CKk" firstAttribute="leading" secondItem="miS-ON-nva" secondAttribute="trailing" constant="16" id="IyA-yl-fGr"/>
+                            <constraint firstItem="56x-o2-nBC" firstAttribute="centerX" secondItem="5Q8-ir-iRS" secondAttribute="centerX" id="MPy-T2-ZOI"/>
                             <constraint firstItem="miS-ON-nva" firstAttribute="top" secondItem="5Q8-ir-iRS" secondAttribute="top" constant="16" id="XGo-1B-GNQ"/>
                             <constraint firstItem="BRd-ik-CKk" firstAttribute="top" secondItem="5Q8-ir-iRS" secondAttribute="top" constant="16" id="XsS-7X-6i3"/>
+                            <constraint firstItem="N4l-cm-soR" firstAttribute="centerX" secondItem="5Q8-ir-iRS" secondAttribute="centerX" id="dEg-z1-Wd7"/>
+                            <constraint firstItem="N4l-cm-soR" firstAttribute="centerY" secondItem="5Q8-ir-iRS" secondAttribute="centerY" id="dbB-bi-NmF"/>
                             <constraint firstItem="miS-ON-nva" firstAttribute="leading" secondItem="5Q8-ir-iRS" secondAttribute="leading" constant="16" id="gko-hu-eUj"/>
+                            <constraint firstItem="56x-o2-nBC" firstAttribute="centerY" secondItem="5Q8-ir-iRS" secondAttribute="centerY" id="sMe-Pc-XaB"/>
                             <constraint firstItem="5Q8-ir-iRS" firstAttribute="trailing" secondItem="BRd-ik-CKk" secondAttribute="trailing" constant="16" id="tjl-nf-LYD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5Q8-ir-iRS"/>
                     </view>
                     <connections>
                         <outlet property="abvLabel" destination="i9Z-aS-dX7" id="pZw-Wc-edv"/>
+                        <outlet property="activityIndicator" destination="56x-o2-nBC" id="8sH-90-dYE"/>
                         <outlet property="descriptionLabel" destination="2mw-2v-BdD" id="FRq-Tc-ubA"/>
+                        <outlet property="errorLabel" destination="N4l-cm-soR" id="ey2-K2-yzu"/>
                         <outlet property="ibuLabel" destination="AAU-2F-Ghf" id="Jtr-FE-Xal"/>
                         <outlet property="imageView" destination="miS-ON-nva" id="5pc-X4-CfI"/>
                         <outlet property="nameLabel" destination="KD0-Sk-XF8" id="PVR-Dc-Viu"/>

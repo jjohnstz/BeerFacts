@@ -43,16 +43,43 @@ class BeerListInteractorSpec: QuickSpec {
                     
                     describe("resolving promise") {
                         context("promise suceeds") {
+                            let beers = [Beer.testMake(name: "Beer1"), Beer.testMake(name: "Beer2")]
+                            let mockViewState = BeerListViewState(beerTableViewStates: [BeerListTableViewState.testMake(name: "Beer1")])
+                            
                             beforeEach {
-                                //TODO:
-                                //promise.success()
+                                presenter.mockViewState = mockViewState
+                                promise.success(beers)
+                            }
+                            
+                            it("should call presenter with data from service") {
+                                expect(presenter.inputBeers).toEventually(equal(beers))
+                            }
+                            
+                            it("should send viewState to view") {
+                                expect(view.action).toEventually(equal(BeerListViewAction.display(mockViewState)))
+                            }
+                            
+                            describe("beer selected") {
+                                beforeEach {
+                                    //Wait for previous test to finish
+                                    expect(view.action).toEventually(equal(BeerListViewAction.display(mockViewState)))
+                                    
+                                    subject.handle(event: .didSelectIndex(1))
+                                }
+                                
+                                it("should send route to view") {
+                                    expect(view.action).toEventually(equal(BeerListViewAction.routeToBeerDetails(beerName: beers[1].name)))
+                                }
                             }
                         }
                         
                         context("promise fails") {
                             beforeEach {
-                                //TODO:
-                                //promise.failure()
+                                promise.failure(.serviceError)
+                            }
+                            
+                            it("should display error message") {
+                                expect(view.action).toEventually(equal(BeerListViewAction.errorMessage("Failed to load beers.  Sorry :(")))
                             }
                         }
                     }

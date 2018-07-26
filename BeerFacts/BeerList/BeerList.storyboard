@@ -21,6 +21,12 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="y4i-HO-4WQ">
                                 <rect key="frame" x="169" y="347" width="37" height="37"/>
                             </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S93-We-uMk">
+                                <rect key="frame" x="166" y="355" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4JA-NC-STA">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -30,16 +36,19 @@
                         <constraints>
                             <constraint firstItem="gXl-fX-5jb" firstAttribute="bottom" secondItem="4JA-NC-STA" secondAttribute="bottom" id="9gv-2c-rES"/>
                             <constraint firstItem="4JA-NC-STA" firstAttribute="top" secondItem="gXl-fX-5jb" secondAttribute="top" id="Adq-EN-odi"/>
+                            <constraint firstItem="S93-We-uMk" firstAttribute="centerX" secondItem="gXl-fX-5jb" secondAttribute="centerX" id="JGL-L5-NnL"/>
                             <constraint firstItem="gXl-fX-5jb" firstAttribute="trailing" secondItem="4JA-NC-STA" secondAttribute="trailing" id="dlg-w0-96K"/>
                             <constraint firstItem="y4i-HO-4WQ" firstAttribute="centerY" secondItem="gXl-fX-5jb" secondAttribute="centerY" id="eR2-Kf-XZd"/>
                             <constraint firstItem="4JA-NC-STA" firstAttribute="leading" secondItem="gXl-fX-5jb" secondAttribute="leading" id="i82-kv-Aa5"/>
                             <constraint firstItem="y4i-HO-4WQ" firstAttribute="centerX" secondItem="gXl-fX-5jb" secondAttribute="centerX" id="mxo-v9-S2r"/>
+                            <constraint firstItem="S93-We-uMk" firstAttribute="centerY" secondItem="gXl-fX-5jb" secondAttribute="centerY" id="z0d-g3-npm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gXl-fX-5jb"/>
                     </view>
                     <navigationItem key="navigationItem" title="Beers" id="DDa-kS-3Ns"/>
                     <connections>
                         <outlet property="activityIndicator" destination="y4i-HO-4WQ" id="Osl-IF-84P"/>
+                        <outlet property="errorLabel" destination="S93-We-uMk" id="n9N-B9-UM8"/>
                         <outlet property="tableView" destination="4JA-NC-STA" id="NI8-Z5-zHY"/>
                         <segue destination="QWH-Pt-dA2" kind="show" identifier="ShowBeerDetails" id="RPU-5g-Z96"/>
                     </connections>
